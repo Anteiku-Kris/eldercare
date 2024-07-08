@@ -67,7 +67,7 @@ public class Patients {
 
     @JsonIgnoreProperties({"hibernateLazyInitializes", "handler"})
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "doctorId")
+    @JoinColumn(name = "patientId")
     private List<DocAppointments> docAppointments;
 
 }
