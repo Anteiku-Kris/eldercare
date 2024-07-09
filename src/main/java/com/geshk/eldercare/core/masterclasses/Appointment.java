@@ -1,4 +1,4 @@
-package com.geshk.eldercare.utils.masterclasses;
+package com.geshk.eldercare.core.masterclasses;
 
 
 import jakarta.persistence.MappedSuperclass;

@@ -1,4 +1,4 @@
-package com.geshk.eldercare.utils.emuns;
+package com.geshk.eldercare.core.emuns;
 
 public enum UserRole {
     ADMIN,

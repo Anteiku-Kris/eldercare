@@ -1,7 +1,7 @@
-package com.geshk.eldercare.utils.dtos;
+package com.geshk.eldercare.core.dtos;
 
-import com.geshk.eldercare.utils.emuns.UserGender;
-import com.geshk.eldercare.utils.emuns.UserRole;
+import com.geshk.eldercare.core.emuns.UserGender;
+import com.geshk.eldercare.core.emuns.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
