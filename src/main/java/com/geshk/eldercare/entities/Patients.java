@@ -2,7 +2,7 @@ package com.geshk.eldercare.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.geshk.eldercare.utils.emuns.UserGender;
+import com.geshk.eldercare.core.emuns.UserGender;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -68,6 +68,6 @@ public class Patients {
     @JsonIgnoreProperties({"hibernateLazyInitializes", "handler"})
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "patientId")
-    private List<DocAppointments> docAppointments;
+    private List<Appointments> appointments;
 
 }

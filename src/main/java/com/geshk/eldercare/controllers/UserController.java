@@ -3,7 +3,7 @@ package com.geshk.eldercare.controllers;
 
 import com.geshk.eldercare.entities.Users;
 import com.geshk.eldercare.services.UserService;
-import com.geshk.eldercare.utils.dtos.UserDto;
+import com.geshk.eldercare.core.dtos.UserDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

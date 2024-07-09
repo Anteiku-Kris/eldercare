@@ -3,7 +3,7 @@ package com.geshk.eldercare.controllers;
 
 import com.geshk.eldercare.entities.Users;
 import com.geshk.eldercare.services.DoctorService;
-import com.geshk.eldercare.utils.dtos.UserDto;
+import com.geshk.eldercare.core.dtos.UserDto;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,7 +46,7 @@ public class DoctorController {
             return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
         user.setId(id);
-        Users updatedDoctor = doctorService.updateDoctor(user);
+        UserDto updatedDoctor = doctorService.updateDoctor(user);
         if (updatedDoctor != null) {
             return new ResponseEntity<>(updatedDoctor, HttpStatus.OK);
         } else {
@@ -59,7 +59,7 @@ public class DoctorController {
         if (result.hasErrors()) {
             return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
-        Users savedDoctor = doctorService.createDoctor(user);
+        UserDto savedDoctor = doctorService.createDoctor(user);
         return new ResponseEntity<>(savedDoctor, HttpStatus.CREATED);
     }
 }

@@ -3,8 +3,8 @@ package com.geshk.eldercare.services.servicesimpl;
 import com.geshk.eldercare.entities.Users;
 import com.geshk.eldercare.repositories.UserRepo;
 import com.geshk.eldercare.services.UserService;
-import com.geshk.eldercare.utils.dtos.UserDto;
-import com.geshk.eldercare.utils.emuns.UserRole;
+import com.geshk.eldercare.core.dtos.UserDto;
+import com.geshk.eldercare.core.emuns.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

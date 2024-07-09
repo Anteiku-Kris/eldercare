@@ -3,8 +3,8 @@ package com.geshk.eldercare.services.servicesimpl;
 import com.geshk.eldercare.entities.Users;
 import com.geshk.eldercare.repositories.UserRepo;
 import com.geshk.eldercare.services.DoctorService;
-import com.geshk.eldercare.utils.dtos.UserDto;
-import com.geshk.eldercare.utils.emuns.UserRole;
+import com.geshk.eldercare.core.dtos.UserDto;
+import com.geshk.eldercare.core.emuns.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,16 +19,16 @@ public class DoctorServiceImpl implements DoctorService {
     private UserRepo userRepo;
 
     @Override
-    public Users createDoctor(Users users) {
+    public UserDto createDoctor(Users users) {
         Users newDoctor = userRepo.findAllById(users.getId());
 
         if (newDoctor != null) {
-            return newDoctor;
+            return userDtoBuilder(newDoctor);
         }
 
         userRepo.save(buildUser(users));
 
-        return buildUser(users);
+        return userDtoBuilder(users);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     @Override
-    public Users updateDoctor(Users users) {
+    public UserDto updateDoctor(Users users) {
         Users doctor = userRepo.findAllById(users.getId());
 
         if (doctor == null) {
@@ -59,7 +59,7 @@ public class DoctorServiceImpl implements DoctorService {
 
         userRepo.save(doctor);
 
-        return doctor;
+        return userDtoBuilder(doctor);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class DoctorServiceImpl implements DoctorService {
     }
 
     //Users Builder
-    private Users buildUser(Users user){
+    private Users buildUser(Users user) {
 
         return Users.builder()
                 .name(user.getName())
@@ -87,7 +87,8 @@ public class DoctorServiceImpl implements DoctorService {
                 .build();
     }
 
-    private UserDto userDtoBuilder(Users user){
+
+    private UserDto userDtoBuilder(Users user) {
         return UserDto.builder()
                 .id(user.getId())
                 .name(user.getName())
