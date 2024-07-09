@@ -1,6 +1,6 @@
 package com.geshk.eldercare.entities;
 
-import com.geshk.eldercare.utils.masterclasses.Appointment;
+import com.geshk.eldercare.core.masterclasses.Appointment;
 import jakarta.persistence.*;
 import lombok.*;
 
