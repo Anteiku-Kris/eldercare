@@ -16,8 +16,8 @@ public class UserMeds {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
-    private int userId;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    private Users userId;
 
     @Column(nullable = false)
     private String start;

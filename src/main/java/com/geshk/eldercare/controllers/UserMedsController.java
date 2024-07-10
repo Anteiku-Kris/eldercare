@@ -1,42 +1,57 @@
 package com.geshk.eldercare.controllers;
 
+import com.geshk.eldercare.core.dtos.UserMedsDto;
 import com.geshk.eldercare.entities.UserMeds;
 import com.geshk.eldercare.services.UsersMedService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 @RestController
-@RequestMapping("/api/usermeds")
+@RequestMapping("/api/v1/user-meds")
 public class UserMedsController {
 
     @Autowired
-    private UsersMedService userMedsService;
+    private UsersMedService usersMedService;
 
     @PostMapping
-    public ResponseEntity<UserMeds> createUserMeds(@RequestBody UserMeds userMeds){
-        UserMeds newUserMeds = userMedsService.createUserMeds(userMeds);
-        return ResponseEntity.ok(newUserMeds);
+    public ResponseEntity<?> createUserMeds(@Valid @RequestBody UserMeds userMeds, BindingResult result) {
+        if (result.hasErrors()) {
+            return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
+        }
+        UserMedsDto createdUserMeds = usersMedService.createUserMeds(userMeds);
+        return new ResponseEntity<>(createdUserMeds, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Optional<UserMeds>> getUserMeds(@PathVariable int id) {
-        Optional<UserMeds> userMeds = userMedsService.getUserMeds(id);
-        return ResponseEntity.ok(userMeds);
+    @GetMapping("/user/{id}")
+    public ResponseEntity<List<UserMedsDto>> getUserMeds(@PathVariable int id) {
+        List<UserMedsDto> userMeds = usersMedService.getUserMeds(id);
+        return new ResponseEntity<>(userMeds, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserMeds> updateUserMeds(@PathVariable int id, @RequestBody UserMeds userMeds){
+    public ResponseEntity<?> updateUserMeds(@PathVariable int id, @Valid @RequestBody UserMeds userMeds, BindingResult result) {
+        if (result.hasErrors()) {
+            return new ResponseEntity<>(result.getAllErrors(), HttpStatus.BAD_REQUEST);
+        }
         userMeds.setId(id);
-        UserMeds updatedUserMeds = userMedsService.updateUserMeds(userMeds);
-        return ResponseEntity.ok(updatedUserMeds);
+        UserMedsDto updatedUserMeds = usersMedService.updateUserMeds(userMeds);
+        if (updatedUserMeds != null) {
+            return new ResponseEntity<>(updatedUserMeds, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("User Medications not found", HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void>deleteUserMeds(@PathVariable int id){
-        userMedsService.deleteUserMeds(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Void> deleteUserMeds(@PathVariable int id) {
+        usersMedService.deleteUserMeds(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
