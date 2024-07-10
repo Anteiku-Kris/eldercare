@@ -18,6 +18,6 @@ public class AppoimentDto {
     private String time;
     private String description;
     private String doctorName;
-    private Users userId;
-    private Patients patientId;
+    private int userId;
+    private int patientId;
 }

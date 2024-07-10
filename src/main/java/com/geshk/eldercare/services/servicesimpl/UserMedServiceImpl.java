@@ -32,7 +32,7 @@ public class UserMedServiceImpl implements UsersMedService {
     @Override
     public List<UserMedsDto> getUserMeds(int id) {
         return  userMedRepo.findAll().stream()
-                .filter(appointments -> appointments.getUserId().equals(id))
+                .filter(appointments -> appointments.getUserId() == id )
                 .map(this::userAppointmentsDto)
                 .collect(Collectors.toList());
    }

@@ -62,7 +62,6 @@ public class Patients {
     private String birthday;
 
     @NotEmpty
-    @Column(nullable = false)
     private int doctorId;
 
     @JsonIgnoreProperties({"hibernateLazyInitializes", "handler"})

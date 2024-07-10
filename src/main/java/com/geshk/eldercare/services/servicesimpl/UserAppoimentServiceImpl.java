@@ -20,7 +20,7 @@ public class UserAppoimentServiceImpl implements UserAppoimentService {
     @Override
     public List<AppoimentDto> getAppoimentsByUser(int userId) {
         return appoinmentRepo.findAll().stream()
-                .filter(appointments -> appointments.getUserId().equals(userId))
+                .filter(appointments -> appointments.getUserId() == userId)
                 .map(this::userAppointmentsDto)
                 .collect(Collectors.toList());
     }
