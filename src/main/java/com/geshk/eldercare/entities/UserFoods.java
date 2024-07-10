@@ -1,10 +1,13 @@
 package com.geshk.eldercare.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
 
 @Entity
 @Data
@@ -17,7 +20,7 @@ public class UserFoods {
     private int id;
 
     @Column(nullable = false)
-    private int userId;
+    private int UserId;
 
     @Column(nullable = false)
     private String name;

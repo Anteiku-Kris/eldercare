@@ -85,8 +85,18 @@ public class Users {
     @JoinColumn(name = "doctorId")
     private List<Patients> docPatients;
 
+
+    // User Relations
     @JsonIgnoreProperties({"hibernateLazyInitializes", "handler"})
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "userId")
     private List<UserMeds> userMeds;
+
+
+
+    @JsonIgnoreProperties({"hibernateLazyInitializes", "handler"})
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "userId")
+    private List<UserFoods> userFoods;
+
 }
