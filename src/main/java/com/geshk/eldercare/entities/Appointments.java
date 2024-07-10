@@ -15,10 +15,10 @@ public class Appointments {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotEmpty(message = "Ingrese el Id del usuario de otra forma cree uno nuevo")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
-    private Users userId;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
-    private Patients patientId;
+    @Column(nullable = false)
+    private int userId;
+    @Column(nullable = true)
+    private int patientId;
     @NotEmpty(message = "Ingrese la fecha de la cita")
     @Column(nullable = false)
     private String date;

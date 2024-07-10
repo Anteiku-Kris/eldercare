@@ -24,7 +24,7 @@ public class DocAppoimentServiceImpl implements DocAppoimentService {
     @Override
     public List<AppoimentDto> findByDocId(int id) {
         return appoinmentRepo.findAll().stream()
-                .filter(appointments -> appointments.getUserId().equals(id))
+                .filter(appointments -> appointments.getUserId() == id)
                 .map(this::docAppointmentsDto)
                 .collect(Collectors.toList());
     }
