@@ -17,8 +17,9 @@ public class Appointments {
     @NotEmpty(message = "Ingrese el Id del usuario de otra forma cree uno nuevo")
     @Column(nullable = false)
     private int userId;
-    @Column(nullable = true)
-    private int patientId;
+    @ManyToOne
+    @JoinColumn(name = "patientId" , nullable = true)
+    private Patients patientId;
     @NotEmpty(message = "Ingrese la fecha de la cita")
     @Column(nullable = false)
     private String date;

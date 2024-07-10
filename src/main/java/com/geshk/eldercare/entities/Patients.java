@@ -61,12 +61,10 @@ public class Patients {
     @Column(nullable = false)
     private String birthday;
 
-    @NotEmpty
+    @NotEmpty(message = "Ingrese el id doctor que genero la cita")
     private int doctorId;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializes", "handler"})
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "patientId")
-    private List<Appointments> appointments;
+    @NotEmpty(message = "Ingrese el id de la cita")
+    private int appointments;
 
 }

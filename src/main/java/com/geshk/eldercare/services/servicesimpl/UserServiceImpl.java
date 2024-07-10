@@ -104,6 +104,7 @@ public class UserServiceImpl implements UserService {
                 .role(user.getRole())
                 .birthday(user.getBirthday())
                 .gender(user.getGender())
+                .password(user.getPassword())
                 .build();
     }
 }

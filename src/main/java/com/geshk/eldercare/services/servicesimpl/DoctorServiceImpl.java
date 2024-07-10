@@ -100,6 +100,7 @@ public class DoctorServiceImpl implements DoctorService {
                 .role(user.getRole())
                 .birthday(user.getBirthday())
                 .gender(user.getGender())
+                .password(user.getPassword())
                 .build();
     }
 

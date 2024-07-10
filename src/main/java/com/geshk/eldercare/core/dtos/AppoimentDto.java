@@ -19,5 +19,5 @@ public class AppoimentDto {
     private String description;
     private String doctorName;
     private int userId;
-    private int patientId;
+    private Patients patientId;
 }

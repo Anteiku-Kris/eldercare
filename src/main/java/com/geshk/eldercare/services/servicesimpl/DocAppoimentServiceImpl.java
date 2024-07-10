@@ -32,7 +32,7 @@ public class DocAppoimentServiceImpl implements DocAppoimentService {
     @Override
     public List<AppoimentDto> findByDate(String date, int id) {
         return appoinmentRepo.findAll().stream()
-                .filter(appointments -> appointments.getDate().equals("Date") && appointments.getId() == id)
+                .filter(appointments -> appointments.getDate().equals("Date") && appointments.getUserId() == id)
                 .map(this::docAppointmentsDto)
                 .collect(Collectors.toList());
     }
