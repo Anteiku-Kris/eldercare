@@ -12,10 +12,10 @@ public class Appointments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(nullable = false)
-    private int userId;
-    @Column(nullable = true)
-    private int patientId;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
+    private Users userId;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true)
+    private Patients patientId;
     @Column(nullable = false)
     private String date;
     @Column(nullable = false)

@@ -1,5 +1,7 @@
 package com.geshk.eldercare.core.dtos;
 
+import com.geshk.eldercare.entities.Patients;
+import com.geshk.eldercare.entities.Users;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +18,6 @@ public class AppoimentDto {
     private String time;
     private String description;
     private String doctorName;
-    private int userId;
-    private int patientId;
+    private Users userId;
+    private Patients patientId;
 }
